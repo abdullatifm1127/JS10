@@ -1,31 +1,23 @@
-import TampilanProduk from "../../views/produk";
+import TampilanProduk from "@/views/product";
+import { ProductType } from "../../types/product.type";
 
-
-type ProductType = {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-    category: string;
-};
-const halamanProdukServer = ({products}: {products: ProductType[]}) => {
+const halamanProdukServer = (props: {products: ProductType[]}) => {
+    const { products } = props;
     return (
         <div>
-            <h1>Halaman Produk Server by Abdul Latif</h1>
+            <h1>Halaman Produk Server</h1>
             <TampilanProduk products={products} />
         </div>
     );
-}
-
+};
 export default halamanProdukServer;
 
 export async function getServerSideProps() {
-    const res = await fetch("http://localhost:3000/api/produk");
-    const respone = await res.json();
-
+    const res = await fetch('http://localhost:3000/api/produk');
+    const data = await res.json();
     return {
         props: {
-            products: respone
-        },
+            products: data.data
+        }
     };
 }

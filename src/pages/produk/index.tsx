@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import {useEffect, useState} from "react";
-import TampilanProduk from "../../views/produk";
+import TampilanProduk from "../../views/product";
 import useSWR from "swr";
-import fetcher from "@/pages/utlis/db/swr/fetcher";
+import fetcher from "@/utlis/db/swr/fetcher";
 
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -10,7 +10,7 @@ import fetcher from "@/pages/utlis/db/swr/fetcher";
 const kategori = () => {
     const [products, setProducts] = useState([]);
 
-    const { data, error } = useSWR("/api/products", fetcher);
+       const { data, error } = useSWR("/api/produk", fetcher);
 
     return (
         <div>
